@@ -2,6 +2,7 @@
 stack = ["log", "--revisions", "(main..@):: | (main..@)-"]
 
 [ui]
+default-command = "stack"
 
 [user]
 name = "Erich Gubler"
