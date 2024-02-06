@@ -1,6 +1,8 @@
 [aliases]
 stack = ["log", "--revisions", "(main..@):: | (main..@)-"]
 
+[ui]
+
 [user]
 name = "Erich Gubler"
 email = "erichdongubler@gmail.com"
