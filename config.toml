@@ -1,5 +1,6 @@
 [aliases]
 stack = ["log", "--revisions=erichdongubler_stack(@)", "--template=erichdongubler_stack()"]
+stacks = ["log", "--revisions=erichdongubler_stacks(@)", "--template=erichdongubler_stack()"]
 
 [colors]
 "branch" = "bright green"
@@ -32,6 +33,7 @@ stack = ["log", "--revisions=erichdongubler_stack(@)", "--template=erichdonguble
 [revset-aliases]
 "erichdongubler_common_ancestor_with_trunk(x)" = "(::trunk() & ::x) ~ (::trunk() & ::x)-"
 "erichdongubler_stack(x)" = "erichdongubler_common_ancestor_with_trunk(x)::x | x:: | trunk()"
+"erichdongubler_stacks(x)" = "children(erichdongubler_common_ancestor_with_trunk(x)::x) | trunk()"
 
 [template-aliases]
 "erichdongubler_stack()" = '''
