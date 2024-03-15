@@ -1,6 +1,7 @@
 [aliases]
 stack = ["log", "--revisions=erichdongubler_stack(@)", "--template=erichdongubler_stack()"]
 stacks = ["log", "--revisions=erichdongubler_stacks(@)", "--template=erichdongubler_stack()"]
+tree = ["log", "--revisions=@ | ancestors(visible_heads() ~ remote_branches(), 2) | trunk()", "--template=erichdongubler_preferred()"]
 
 [colors]
 "branch" = "bright green"
