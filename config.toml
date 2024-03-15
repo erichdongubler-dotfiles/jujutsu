@@ -1,5 +1,105 @@
 [aliases]
-stack = ["log", "--revisions", "(main..@):: | (main..@)-"]
+stack = ["log", "--revisions=erichdongubler_stack(@)", "--template=erichdongubler_stack()"]
+
+[colors]
+"branch" = "bright green"
+"branch remote" = "red"
+"change_id" = "bright magenta"
+"commit_id" = "bright blue"
+"description" = "default"
+"description placeholder" = "bright black"
+"email" = "bright black"
+"empty description placeholder" = "bright black"
+"empty" = "bright black"
+"erichdongubler_dash_fluff" = "bright black"
+"git_head" = { fg = "cyan", bold = true }
+"git_refs" = "green"
+"timestamp" = "green"
+"username" = "bright black"
+"working_copy" = { color = "bright", bold = true }
+"working_copy change_id" = { bold = true }
+"working_copy commit_id" = { bold = true }
+"working_copy description placeholder" = { color = "bright black", bold = true, underline = true }
+"working_copy description" = { color = "bright white", bold = true, underline = true }
+"working_copy git_refs" = {}
+"working_copy email" = { bold = true }
+"working_copy empty" = { bold = true }
+"working_copy empty description placeholder" = { bold = true }
+"working_copy timestamp" = { color = "red" }
+"working_copy empty timestamp" = { color = "red" }
+"working_copy username" = { bold = true }
+
+[revset-aliases]
+"erichdongubler_common_ancestor_with_trunk(x)" = "(::trunk() & ::x) ~ (::trunk() & ::x)-"
+"erichdongubler_stack(x)" = "erichdongubler_common_ancestor_with_trunk(x)::x | x:: | trunk()"
+
+[template-aliases]
+"erichdongubler_stack()" = '''
+if(
+	self.contained_in("trunk() | erichdongubler_common_ancestor_with_trunk(@)"),
+	separate(" ",
+		label("erichdongubler_dash_fluff", "---"),
+		format_short_change_id_with_hidden_and_divergent_info(self),
+		format_short_commit_id(commit_id),
+		label("erichdongubler_dash_fluff", "-"),
+		branches.map(|branch|
+			label(
+				"branch",
+				if(
+					branch.remote(),
+					label("remote", branch.name() ++ "@" ++ branch.remote()),
+					branch.name(),
+				),
+			)
+		),
+		tags,
+		working_copies,
+		git_head,
+		if(conflict, label("conflict", "conflict")),
+		if(empty, label("empty", "(empty)")),
+	),
+	erichdongubler_preferred()
+)
+'''
+"erichdongubler_preferred()" = '''
+if(
+	root,
+	format_root_commit(self),
+	label(if(current_working_copy, "working_copy"),
+		concat(
+			separate(" ",
+				label("erichdongubler_dash_fluff", "---"),
+				format_short_change_id_with_hidden_and_divergent_info(self),
+				format_short_commit_id(commit_id),
+				label("erichdongubler_dash_fluff", "-"),
+				branches.map(|branch|
+					label(
+						"branch",
+						if(
+							branch.remote(),
+							label("remote", branch.name() ++ "@" ++ branch.remote()),
+							branch.name(),
+						),
+					)
+				),
+				tags,
+				working_copies,
+				git_head,
+				if(conflict, label("conflict", "conflict")),
+				if(empty, label("empty", "(empty)")),
+			),
+			"\n",
+			separate(" ",
+				if(description, description.first_line(), description_placeholder),
+				label("username", if(author.name(), author.name(), email_placeholder)),
+				format_timestamp(committer.timestamp()),
+			),
+		),
+	),
+)
+'''
+"format_timestamp(timestamp)" = 'label("timestamp", timestamp.ago())'
+"format_short_signature(signature)" = "signature.username()"
 
 [ui]
 default-command = "stack"
