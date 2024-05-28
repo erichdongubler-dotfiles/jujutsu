@@ -1,4 +1,5 @@
 [aliases]
+iwc = ["--ignore-working-copy"]
 np = ["--no-pager"]
 pl = ["log", "--template=erichdongubler_preferred()"]
 rev-parse = ["log", "--no-graph", "--no-pager", "--color=never", "--template=self.commit_id() ++ '\n'", "--revisions"]
