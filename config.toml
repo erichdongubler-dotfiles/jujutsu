@@ -44,33 +44,6 @@ wip = ["pl", "--revisions=working_copies()"]
 "erichdongubler_stack_review(x)" = "descendants((::trunk() | ::x) ~ (::trunk() & ::x)-)"
 
 [template-aliases]
-"erichdongubler_stack()" = '''
-if(
-	self.contained_in("trunk() | erichdongubler_common_ancestor_with_trunk(@)"),
-	separate(" ",
-		label("erichdongubler_dash_fluff", "---"),
-		format_short_change_id_with_hidden_and_divergent_info(self),
-		format_short_commit_id(commit_id),
-		label("erichdongubler_dash_fluff", "-"),
-		branches.map(|branch|
-			label(
-				"branch",
-				if(
-					branch.remote(),
-					label("remote", branch.name() ++ "@" ++ branch.remote()),
-					branch.name(),
-				),
-			)
-		),
-		tags,
-		working_copies,
-		git_head,
-		if(conflict, label("conflict", "conflict")),
-		if(empty, label("empty", "(empty)")),
-	),
-	erichdongubler_preferred()
-)
-'''
 "erichdongubler_preferred()" = '''
 if(
 	root,
