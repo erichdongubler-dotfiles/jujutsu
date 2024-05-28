@@ -39,8 +39,8 @@ wip = ["pl", "--revisions=working_copies()"]
 [revset-aliases]
 "erichdongubler_common_ancestor_with_trunk(x)" = "(::trunk() & ::x) ~ (::trunk() & ::x)-"
 "erichdongubler_stack(x)" = "erichdongubler_common_ancestor_with_trunk(x)::x | x:: | trunk()"
-"erichdongubler_stacks(x)" = "children(erichdongubler_common_ancestor_with_trunk(x)::x) | trunk()"
-"erichdongubler_stack_review(x)" = "children((::trunk() | ::x) ~ (::trunk() & ::x)-) | x::"
+"erichdongubler_stacks(x)" = "descendants(erichdongubler_common_ancestor_with_trunk(x)::x) | trunk()"
+"erichdongubler_stack_review(x)" = "descendants((::trunk() | ::x) ~ (::trunk() & ::x)-)"
 
 [template-aliases]
 "erichdongubler_stack()" = '''
