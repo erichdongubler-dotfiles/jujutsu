@@ -1,6 +1,6 @@
 [aliases]
-pl = ["log", "--revisions=..@"]
 np = ["--no-pager"]
+pl = ["log", "--template=erichdongubler_preferred()"]
 rev-parse = ["log", "--no-graph", "--no-pager", "--color=never", "--template=self.commit_id() ++ '\n'", "--revisions"]
 review = ["log", "--revisions=erichdongubler_stack_review(@)", "--template=erichdongubler_stack()"]
 stack = ["log", "--revisions=erichdongubler_stack(@)", "--template=erichdongubler_stack()"]
