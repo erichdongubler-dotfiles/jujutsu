@@ -1,4 +1,5 @@
 [aliases]
+pl = ["log", "--revisions=..@"]
 rev-parse = ["log", "--no-graph", "--no-pager", "--color=never", "--template=self.commit_id() ++ '\n'", "--revisions"]
 stack = ["log", "--revisions=erichdongubler_stack(@)", "--template=erichdongubler_stack()"]
 stacks = ["log", "--revisions=erichdongubler_stacks(@)", "--template=erichdongubler_stack()"]
