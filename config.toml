@@ -86,9 +86,7 @@ if(
 
 [ui]
 default-command = "stack"
-
-merge-editor = "p4merge"
-merge-tools.p4merge.merge-args = ["$base", "$left", "$right", "-o", "$output"]
+merge-editor = ["p4merge", "$base", "$left", "$right", "$output"]
 
 [user]
 name = "Erich Gubler"
