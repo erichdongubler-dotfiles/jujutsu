@@ -41,7 +41,7 @@ wip = ["pl", "--revisions=working_copies()"]
 "erichdongubler_common_ancestor_with_trunk(x)" = "heads(::x & ::trunk())"
 "erichdongubler_stack(x)" = "erichdongubler_common_ancestor_with_trunk(x)::x | x:: | trunk()"
 "erichdongubler_stacks(x)" = "erichdongubler_common_ancestor_with_trunk(x)::x | descendants(erichdongubler_common_ancestor_with_trunk(x)..x) | trunk()"
-"erichdongubler_stack_review(x)" = "descendants((::trunk() | ::x) ~ (::trunk() & ::x)-)"
+"erichdongubler_stack_review(x)" = "erichdongubler_stacks(x) | erichdongubler_common_ancestor_with_trunk(x)::trunk()"
 
 [template-aliases]
 "erichdongubler_preferred()" = '''
