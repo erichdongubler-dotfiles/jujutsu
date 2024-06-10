@@ -10,7 +10,7 @@ tree = ["pl", "--revisions=mutable() | parents(roots(mutable())) | trunk()"]
 wip = ["pl", "--revisions=working_copies()"]
 
 [colors]
-"branch" = "bright green"
+"branch" = { fg = "bright green", bold = true }
 "branch remote" = "red"
 "change_id" = "bright magenta"
 "commit_id" = "bright blue"
