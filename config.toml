@@ -27,6 +27,8 @@ wip = ["pl", "--revisions=working_copies()"]
 "timestamp" = "green"
 "username" = "bright black"
 "working_copy" = { color = "bright", bold = true }
+"working_copy branch" = { fg = "bright green", bold = true }
+"working_copy branch remote" = { fg = "red", bold = true }
 "working_copy change_id" = { bold = true }
 "working_copy commit_id" = { bold = true }
 "working_copy description placeholder" = { color = "bright black", bold = true, underline = true }
