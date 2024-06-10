@@ -7,6 +7,7 @@ review = ["pl", "--revisions=erichdongubler_stack_review(@)"]
 stack = ["np", "pl", "--revisions=erichdongubler_stack(@)"]
 stacks = ["pl", "--revisions=erichdongubler_stacks(@)"]
 tree = ["pl", "--revisions=mutable() | parents(roots(mutable())) | trunk()"]
+trunk = ["pl", "--revisions=..trunk()"]
 wip = ["pl", "--revisions=working_copies()"]
 
 [colors]
