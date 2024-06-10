@@ -26,19 +26,19 @@ wip = ["pl", "--revisions=working_copies()"]
 "tags" = { fg = "yellow", bold = true }
 "timestamp" = "green"
 "username" = "bright black"
-"working_copy" = { color = "bright", bold = true }
+"working_copy" = { fg = "bright green", bold = true }
 "working_copy branch" = { fg = "bright green", bold = true }
 "working_copy branch remote" = { fg = "red", bold = true }
 "working_copy change_id" = { bold = true }
 "working_copy commit_id" = { bold = true }
-"working_copy description placeholder" = { color = "bright black", bold = true, underline = true }
-"working_copy description" = { color = "bright white", bold = true, underline = true }
+"working_copy description placeholder" = { fg = "bright black", bold = true, underline = true }
+"working_copy description" = { fg = "bright white", bold = true, underline = true }
 "working_copy git_refs" = {}
 "working_copy email" = { bold = true }
 "working_copy empty" = { bold = true }
 "working_copy empty description placeholder" = { bold = true }
-"working_copy timestamp" = { color = "red" }
-"working_copy empty timestamp" = { color = "red" }
+"working_copy empty timestamp" = { fg = "red" }
+"working_copy timestamp" = { fg = "red" }
 "working_copy username" = { bold = true }
 
 [revset-aliases]
