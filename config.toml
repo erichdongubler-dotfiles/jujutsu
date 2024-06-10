@@ -39,8 +39,8 @@ wip = ["pl", "--revisions=working_copies()"]
 "working_copy email" = { bold = true }
 "working_copy empty" = { bold = true }
 "working_copy empty description placeholder" = { bold = true }
-"working_copy empty timestamp" = { fg = "red" }
-"working_copy timestamp" = { fg = "red" }
+"working_copy empty timestamp" = "green"
+"working_copy timestamp" = "green"
 "working_copy username" = { bold = true }
 
 [revset-aliases]
