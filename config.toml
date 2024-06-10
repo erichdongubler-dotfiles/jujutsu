@@ -6,7 +6,7 @@ rev-parse = ["log", "--no-graph", "--no-pager", "--color=never", "--template=sel
 review = ["pl", "--revisions=erichdongubler_stack_review(@)"]
 stack = ["np", "pl", "--revisions=erichdongubler_stack(@)"]
 stacks = ["pl", "--revisions=erichdongubler_stacks(@)"]
-tree = ["pl", "--revisions=@ | ancestors(visible_heads() ~ remote_branches(), 2) | trunk()"]
+tree = ["pl", "--revisions=mutable() | parents(roots(mutable())) | trunk()"]
 wip = ["pl", "--revisions=working_copies()"]
 
 [colors]
