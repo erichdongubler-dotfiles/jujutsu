@@ -17,6 +17,7 @@ wip = ["pl", "--revisions=working_copies()"]
 "commit_id" = "bright blue"
 "description" = "default"
 "description placeholder" = "bright black"
+"elided" = "bright black"
 "email" = "bright black"
 "empty description placeholder" = "bright black"
 "empty" = "bright black"
