@@ -61,10 +61,10 @@ wip = ["pl", "--revisions=working_copies()"]
 "op_log current_operation" = { color = "bright white", bold = true }
 
 [revset-aliases]
-"erichdongubler_common_ancestors_with_trunk(x)" = "heads(::x & ::trunk())"
-"erichdongubler_stack(x)" = "erichdongubler_common_ancestors_with_trunk(x)::x | x:: | trunk()"
-"erichdongubler_stacks(x)" = "erichdongubler_common_ancestors_with_trunk(x)::x | descendants(erichdongubler_common_ancestors_with_trunk(x)..x) | trunk()"
-"erichdongubler_stack_review(x)" = "erichdongubler_stacks(x) | erichdongubler_common_ancestors_with_trunk(x)::trunk()"
+"lca(x, y)" = "heads(::x & ::y)" # "lowest common ancestors"
+"erichdongubler_stack(x)" = "lca(x, trunk())::x | x:: | trunk()"
+"erichdongubler_stacks(x)" = "lca(x, trunk())::x | descendants(lca(x, trunk())..x) | trunk()"
+"erichdongubler_stack_review(x)" = "erichdongubler_stacks(x) | lca(x, trunk())::trunk()"
 
 [templates]
 log_node = "erichdongubler_log_node()"
