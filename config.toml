@@ -22,6 +22,8 @@ wip = ["pl", "--revisions=working_copies()"]
 "erichdongubler_dash_fluff" = "bright black"
 "git_head" = { fg = "cyan", bold = true }
 "git_refs" = "green"
+"tag" = { fg = "yellow", bold = true }
+"tags" = { fg = "yellow", bold = true }
 "timestamp" = "green"
 "username" = "bright black"
 "working_copy" = { color = "bright", bold = true }
