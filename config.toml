@@ -62,6 +62,9 @@ wip = ["pl", "--revisions=working_copies()"]
 # <https://github.com/martinvonz/jj/blob/4c57a8868fa175ada435bce96e3805da8607f4b9/cli/src/config/colors.toml#L86-L92>.
 "op_log current_operation" = { color = "bright white", bold = true }
 
+[merge-tools]
+p4merge.merge-args = ["$base", "$left", "$right", "$output"]
+
 [revset-aliases]
 "lca(x, y)" = "heads(::x & ::y)" # "lowest common ancestors"
 "erichdongubler_stack(x)" = "lca(x, trunk())::x | x:: | trunk()"
@@ -143,7 +146,7 @@ if(
 [ui]
 default-command = "stack"
 graph.style = "ascii"
-merge-editor = ["p4merge", "$base", "$left", "$right", "$output"]
+merge-editor = "p4merge"
 
 [user]
 name = "Erich Gubler"
