@@ -67,7 +67,7 @@ p4merge.merge-args = ["$base", "$left", "$right", "$output"]
 
 [revset-aliases]
 "lca(x, y)" = "heads(::x & ::y)" # "lowest common ancestors"
-"erichdongubler_stack(x)" = "lca(x, trunk())::x | x:: | trunk()"
+"erichdongubler_stack(x)" = "immutable()..@ | roots(immutable()..@)- | trunk()"
 "erichdongubler_stacks(x)" = "lca(x, trunk())::x | descendants(lca(x, trunk())..x) | trunk()"
 "erichdongubler_stack_review(x)" = "erichdongubler_stacks(x) | lca(x, trunk())::trunk()"
 
