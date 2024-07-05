@@ -136,7 +136,6 @@ if(
 
 [ui]
 default-command = "stack"
-graph.style = "ascii"
 merge-editor = "p4merge"
 pager = ":builtin"
 
