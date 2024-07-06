@@ -66,6 +66,7 @@ reword = ['--config=templates.draft_commit_description="description"', "describe
 sq = ["squash"]
 stack = ["pl", "--revisions=show_stack(@)"]
 trunk = ["pl", "--revisions=..trunk()"]
+tug = ["bookmark", "advance"]
 unsynced = [
   "pl",
   "--revisions=mutable() ~ ancestors(remote_bookmarks()) ~ (working_copies() & empty() & description(exact:''))",
