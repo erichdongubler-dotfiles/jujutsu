@@ -1,3 +1,5 @@
+"$schema" = "https://jj-vcs.github.io/jj/latest/config-schema.json"
+
 # # Template for `watchman` repository usage, if needed.
 # core.fsmonitor = "watchman"
 # core.watchman = { register_snapshot_trigger = true }
@@ -104,6 +106,9 @@ p4merge.merge-args = ["$base", "$left", "$right", "$output"]
 "show_stack(x)" = "show_fork_point(x | trunk()) | ancestors(immutable()..x, 2)"
 "show_stacks(x)" = "show_fork_point(x | trunk()) | show_reachable_mut(x)"
 "show_review(x)" = "fork_point(x)::x"
+
+[snapshot]
+auto-update-stale = true
 
 [templates]
 log_node = "erichdongubler_log_node()"
