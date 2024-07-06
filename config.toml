@@ -170,6 +170,15 @@ log_node = "erichdongubler_log_node()"
 op_log_node = "erichdongubler_op_node()"
 
 [template-aliases]
+# Hook in `erichdongubler_preferred` intended for repo-specific configuration that can format the
+# first line in a more interesting way, e.g., via `hyperlink()` or formatting/labels.
+"erichdongubler_description_line()" = '''
+if(description, description.first_line(), description_placeholder)
+'''
+# Hook in `erichdongubler_preferred` for "extra refs" that can be implemented via user
+# configuration. Intended for repo-specific configuration for, e.g., patch submission systems that
+# embed the artifact the commit corresponds to.
+"erichdongubler_extra_refs()" = ""
 # Stolen and modified from
 # <https://github.com/martinvonz/jj/blob/4c57a8868fa175ada435bce96e3805da8607f4b9/cli/src/config/templates.toml#L225-L242>
 "erichdongubler_log_node()" = '''
@@ -219,6 +228,7 @@ if(
 				label("erichdongubler_dash_fluff", "---"),
 				format_short_change_id_with_change_offset(self),
 				format_short_commit_id(commit_id),
+				erichdongubler_extra_refs(),
 				label("erichdongubler_dash_fluff", "-"),
 				bookmarks,
 				tags,
@@ -229,7 +239,7 @@ if(
 			"\n",
 			separate(" ",
 				if(empty, label("empty", "(empty)")),
-				if(description, description.first_line(), description_placeholder),
+				erichdongubler_description_line(),
 				label("author", if(author.name(), author.name(), email_placeholder)),
 				format_timestamp(committer.timestamp()),
 			),
