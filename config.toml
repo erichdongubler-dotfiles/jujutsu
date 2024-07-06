@@ -50,6 +50,10 @@ pl = ["log", "--template=erichdongubler_preferred()"]
 pop = ["abandon", "--retain-bookmarks"]
 reach = ["reachable"]
 reachable = ["pl", "--revisions=show_reachable_mut(@)"]
+recent = [
+  "pl",
+  "--revisions=show_reachable_mut(@ | (mutable() & committer_date(after:'1 month ago')))",
+]
 refresh = ["rebase", "-d", "trunk()"]
 rev-parse = [
   "log",
@@ -77,6 +81,7 @@ wip = ["mut", "--revisions=working_copies()"]
 "description placeholder" = "bright black"
 "elided" = "bright black"
 "email" = "bright black"
+"emphasized" = { underline = true }
 "empty description placeholder" = "bright black"
 "empty" = "bright black"
 "erichdongubler_dash_fluff" = "bright black"
@@ -131,6 +136,7 @@ p4merge.merge-args = ["$base", "$left", "$right", "$output"]
 
 [revset-aliases]
 "imm_parents(x)" = "heads(ancestors(immutable()..x, 2))"
+"mut_roots(x)" = "roots(reachable(x, mutable()))"
 "show_conflicts()" = "show_reachable_mut(conflicts() & mutable())"
 "show_fork_point(x)" = "x | fork_point(x)"
 "show_imm_parents(x)" = "show_fork_point(x | trunk()) | imm_parents(x)"
@@ -180,6 +186,13 @@ coalesce(
 	),
 )
 '''
+"erichdongubler_log_node_emphasizing(x)" = '''
+if(
+	self.contained_in(x),
+	label("emphasized", erichdongubler_log_node())
+	erichdongubler_log_node(),
+)
+'''
 "erichdongubler_op_node()" = '''
 coalesce(
 	if(current_operation, label("current_operation", "@")),
@@ -212,6 +225,13 @@ if(
 			),
 		),
 	),
+)
+'''
+"erichdongubler_preferred_emphasizing(x)" = '''
+if(
+	self.contained_in(x),
+	label("emphasized", erichdongubler_preferred()),
+	erichdongubler_preferred()
 )
 '''
 "format_timestamp(timestamp)" = 'label("timestamp", timestamp.ago())'
