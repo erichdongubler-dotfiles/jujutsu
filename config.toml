@@ -1,5 +1,6 @@
 [aliases]
 fresh = ["new", "trunk()"]
+id-parse = ["log", "--no-graph", "--no-pager", "--color=never", "--template=separate(' ', self.change_id(), self.commit_id()) ++ '\n'", "--revisions"]
 iwc = ["--ignore-working-copy"]
 me = ["pl", "--revisions=me()"]
 np = ["--no-pager"]
