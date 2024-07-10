@@ -1,3 +1,7 @@
+# # Template for `watchman` repository usage, if needed.
+# core.fsmonitor = "watchman"
+# core.watchman = { register_snapshot_trigger = true }
+
 [aliases]
 ab = ["abandon"]
 all = ["pl", "--revisions=all() | tags()"]
