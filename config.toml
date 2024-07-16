@@ -1,6 +1,7 @@
 [aliases]
 fresh = ["new", "trunk()"]
 iwc = ["--ignore-working-copy"]
+me = ["pl", "--revisions=me()"]
 np = ["--no-pager"]
 pl = ["log", "--template=erichdongubler_preferred()"]
 refresh = ["rebase", "-d", "trunk()"]
@@ -70,6 +71,7 @@ p4merge.merge-args = ["$base", "$left", "$right", "$output"]
 "erichdongubler_stack(x)" = "immutable()..@ | roots(immutable()..@)- | trunk()"
 "erichdongubler_stacks(x)" = "lca(x, trunk())::x | descendants(lca(x, trunk())..x) | trunk()"
 "erichdongubler_stack_review(x)" = "erichdongubler_stacks(x) | lca(x, trunk())::trunk()"
+"me()" = "(immutable()..mine()) | (immutable()..mine())- | heads((immutable()..mine())::)"
 
 [templates]
 log_node = "erichdongubler_log_node()"
