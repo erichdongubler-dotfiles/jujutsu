@@ -69,10 +69,10 @@ p4merge.merge-args = ["$base", "$left", "$right", "$output"]
 [revset-aliases]
 "lca(x, y)" = "heads(::x & ::y)" # "lowest common ancestors"
 "wc_relative_to_trunk()" = "trunk() | ancestors(immutable()..@, 2)"
-"erichdongubler_stack(x)" = "lca(x, trunk())::x | immutable()..x | roots(immutable()..x)- | trunk()"
+"erichdongubler_stack(x)" = "lca(x, trunk())::x | ancestors(immutable()..x, 2) | trunk()"
 "erichdongubler_stacks(x)" = "lca(x, trunk())::x | descendants(lca(x, trunk())..x) | trunk()"
 "erichdongubler_stack_review(x)" = "erichdongubler_stacks(x) | lca(x, trunk())::trunk()"
-"me()" = "(immutable()..mine()) | (immutable()..mine())- | heads((immutable()..mine())::)"
+"me()" = "ancestors(immutable()..mine(), 2) | heads((immutable()..mine())::)"
 
 [templates]
 log_node = "erichdongubler_log_node()"
