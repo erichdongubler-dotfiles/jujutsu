@@ -68,10 +68,12 @@ p4merge.merge-args = ["$base", "$left", "$right", "$output"]
 
 [revset-aliases]
 "lca(x, y)" = "heads(::x & ::y)" # "lowest common ancestors"
-"wc_relative_to_trunk()" = "trunk() | ancestors(immutable()..@, 2)"
-"erichdongubler_stack(x)" = "lca(x, trunk())::x | ancestors(immutable()..x, 2) | trunk()"
-"erichdongubler_stacks(x)" = "lca(x, trunk())::x | descendants(lca(x, trunk())..x) | trunk()"
-"erichdongubler_stack_review(x)" = "erichdongubler_stacks(x) | lca(x, trunk())::trunk()"
+"relation_to_trunk(x)" = "lca(trunk(), x) | trunk()"
+"stack(x)" = "relation_to_trunk(x) | ancestors(immutable()..x, 2)"
+"shortstack(x)" = "relation_to_trunk(x) | heads(ancestors(immutable()..x, 2))"
+"erichdongubler_stack(x)" = "stack(x) | shortstack(@)"
+"erichdongubler_stacks(x)" = "erichdongubler_stack(x) | descendants(immutable()..x)"
+"erichdongubler_stack_review(x)" = "erichdongubler_stacks(x) | lca(trunk(), x)::trunk()"
 "me()" = "ancestors(immutable()..mine(), 2) | heads((immutable()..mine())::)"
 
 [templates]
