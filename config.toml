@@ -1,5 +1,6 @@
 [aliases]
 all = ["pl", "--revisions=all() | tags()"]
+cleanup = ["pl", "--revisions=branches() & immutable()"]
 fresh = ["new", "trunk()"]
 iwc = ["--ignore-working-copy"]
 me = ["pl", "--revisions=me()"]
