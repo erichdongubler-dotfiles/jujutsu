@@ -1,6 +1,7 @@
 [aliases]
 fresh = ["new", "trunk()"]
 iwc = ["--ignore-working-copy"]
+ls = ["status"]
 ls-branches = ["np", "branch", "list", "--template", "name ++ '\n'"]
 me = ["pl", "--revisions=me()"]
 np = ["--no-pager"]
