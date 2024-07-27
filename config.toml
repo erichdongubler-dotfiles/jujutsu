@@ -9,7 +9,7 @@ rev-parse = ["log", "--no-graph", "--no-pager", "--color=never", "--template=sel
 review = ["pl", "--revisions=erichdongubler_stack_review(@)"]
 stack = ["pl", "--revisions=erichdongubler_stack(@)"]
 stacks = ["pl", "--revisions=erichdongubler_stacks(@)"]
-tree = ["pl", "--revisions=mutable() | parents(roots(mutable())) | trunk()"]
+tree = ["pl", "--revisions=ancestors(mutable(), 2) | trunk()"]
 trunk = ["pl", "--revisions=..trunk()"]
 wip = ["pl", "--revisions=working_copies()"]
 
