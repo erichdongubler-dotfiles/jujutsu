@@ -67,6 +67,9 @@ wip = ["pl", "--revisions=working_copies()"]
 fsmonitor = "watchman"
 watchman = { register_snapshot_trigger = true }
 
+[git]
+push-branch-prefix = "erichdongubler/push-"
+
 [merge-tools]
 p4merge.merge-args = ["$base", "$left", "$right", "$output"]
 
