@@ -166,6 +166,8 @@ if(
 
 [ui]
 default-command = "stack"
+# NOTE: needs to be coordinated with custom `nvim` config.
+diff-editor = ["nvim", "+DiffEditor $left $right $output"]
 merge-editor = "p4merge"
 pager = ":builtin"
 
