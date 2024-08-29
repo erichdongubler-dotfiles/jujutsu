@@ -1,4 +1,5 @@
 [aliases]
+ab = ["abandon"]
 fresh = ["new", "trunk()"]
 iwc = ["--ignore-working-copy"]
 me = ["pl", "--revisions=me()"]
