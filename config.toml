@@ -1,5 +1,6 @@
 [aliases]
 ab = ["abandon"]
+commit-id = ["log", "--no-graph", '--template=self.commit_id() ++ "\n"', "--revisions"]
 fixup-line = ["log", "--no-graph", "--template=\"fixup! \" ++ description.first_line()", "--revisions"]
 fresh = ["new", "trunk()"]
 iwc = ["--ignore-working-copy"]
