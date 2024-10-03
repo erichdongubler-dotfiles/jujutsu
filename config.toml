@@ -14,14 +14,14 @@ review = ["pl", "--revisions=erichdongubler_stack_review(@)"]
 sq = ["squash"]
 stack = ["pl", "--revisions=erichdongubler_stack(@)"]
 stacks = ["pl", "--revisions=erichdongubler_stacks(@)"]
-tree = ["pl", "--revisions=ancestors(mutable(), 2) | trunk() | branches()"]
+tree = ["pl", "--revisions=ancestors(mutable(), 2) | trunk() | bookmarks()"]
 trunk = ["pl", "--revisions=..trunk()"]
-unsynced = ["pl", "--revisions=mutable() ~ ancestors(remote_branches())"]
+unsynced = ["pl", "--revisions=mutable() ~ ancestors(remote_bookmarks())"]
 wip = ["pl", "--revisions=working_copies()"]
 
 [colors]
-"branch" = { fg = "bright green", bold = true }
-"branch remote" = "red"
+"bookmark" = { fg = "bright green", bold = true }
+"bookmark remote" = "red"
 "change_id" = "bright magenta"
 "commit_id" = "bright blue"
 "description" = "default"
@@ -35,11 +35,13 @@ wip = ["pl", "--revisions=working_copies()"]
 "git_refs" = "green"
 "tag" = { fg = "yellow", bold = true }
 "tags" = { fg = "yellow", bold = true }
-"timestamp" = "green"
-"username" = "bright black"
+"author timestamp" = "green"
+"author" = "bright black"
+"committer" = "bright black"
+"committer timestamp" = "green"
 "working_copy" = { fg = "bright green", bold = true }
-"working_copy branch" = { fg = "bright green", bold = true }
-"working_copy branch remote" = { fg = "red", bold = true }
+"working_copy bookmark" = { fg = "bright green", bold = true }
+"working_copy bookmark remote" = { fg = "red", bold = true }
 "working_copy change_id" = { bold = true }
 "working_copy commit_id" = { bold = true }
 "working_copy description placeholder" = { fg = "bright black", bold = true, underline = true }
@@ -50,7 +52,8 @@ wip = ["pl", "--revisions=working_copies()"]
 "working_copy empty description placeholder" = { bold = true }
 "working_copy empty timestamp" = "green"
 "working_copy timestamp" = "green"
-"working_copy username" = { bold = true }
+"working_copy author" = { bold = true }
+"working_copy committer" = { bold = true }
 
 # Nodes in `log` graph output
 # Stolen and modified from
@@ -70,7 +73,7 @@ wip = ["pl", "--revisions=working_copies()"]
 "op_log current_operation" = { color = "bright white", bold = true }
 
 [git]
-push-branch-prefix = "erichdongubler/push-"
+push-bookmark-prefix = "erichdongubler/push-"
 
 [merge-tools]
 p4merge.merge-args = ["$base", "$left", "$right", "$output"]
@@ -128,7 +131,7 @@ if(
 				format_short_change_id_with_hidden_and_divergent_info(self),
 				format_short_commit_id(commit_id),
 				label("erichdongubler_dash_fluff", "-"),
-				branches,
+				bookmarks,
 				tags,
 				working_copies,
 				git_head,
@@ -138,7 +141,7 @@ if(
 			separate(" ",
 				if(empty, label("empty", "(empty)")),
 				if(description, description.first_line(), description_placeholder),
-				label("username", if(author.name(), author.name(), email_placeholder)),
+				label("author", if(author.name(), author.name(), email_placeholder)),
 				format_timestamp(committer.timestamp()),
 			),
 		),
@@ -146,7 +149,7 @@ if(
 )
 '''
 "format_timestamp(timestamp)" = 'label("timestamp", timestamp.ago())'
-"format_short_signature(signature)" = "signature.username()"
+"format_short_signature(signature)" = "signature.author()"
 
 [ui]
 default-command = "stack"
