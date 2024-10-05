@@ -87,7 +87,7 @@ p4merge.merge-args = ["$base", "$left", "$right", "$output"]
 "stack(x)" = "relation_to_trunk(x) | ancestors(immutable()..x, 2)"
 "shortstack(x)" = "relation_to_trunk(x) | heads(ancestors(immutable()..x, 2))"
 "erichdongubler_stack(x)" = "stack(x) | shortstack(@)"
-"erichdongubler_stacks(x)" = "erichdongubler_stack(x) | descendants(immutable()..x)"
+"erichdongubler_stacks(x)" = "erichdongubler_stack(x) | ancestors(reachable(@, mutable()), 2)"
 "erichdongubler_stack_review(x)" = "erichdongubler_stacks(x) | lca(trunk(), x)::trunk()"
 "me()" = "ancestors(immutable()..mine(), 2) | (immutable()..mine()):: | shortstack(@)"
 
