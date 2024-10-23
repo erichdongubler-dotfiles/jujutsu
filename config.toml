@@ -96,7 +96,7 @@ p4merge.merge-args = ["$base", "$left", "$right", "$output"]
 "erichdongubler_stack(x)" = "stack(x) | shortstack(@)"
 "erichdongubler_stacks(x)" = "erichdongubler_stack(x) | ancestors(reachable(@, mutable()), 2)"
 "erichdongubler_stack_review(x)" = "erichdongubler_stacks(x) | lca(trunk(), x)::trunk()"
-"me()" = "ancestors(immutable()..mine(), 2) | (immutable()..mine()):: | shortstack(@)"
+"me()" = "ancestors(reachable(mine(), mutable()), 2) | shortstack(@)"
 
 [templates]
 log_node = "erichdongubler_log_node()"
