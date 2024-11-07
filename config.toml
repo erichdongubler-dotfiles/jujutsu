@@ -152,7 +152,7 @@ if(
 )
 '''
 "format_timestamp(timestamp)" = 'label("timestamp", timestamp.ago())'
-"format_short_signature(signature)" = "signature.author()"
+"format_short_signature(signature)" = "signature.name()"
 
 [ui]
 default-command = "stack"
