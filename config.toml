@@ -21,7 +21,7 @@ reach = ["reachable"]
 reachable = ["pl", "--revisions=show_stacks(@)"]
 refresh = ["rebase", "-d", "trunk()"]
 rev-parse = ["log", "--no-graph", "--no-pager", "--color=never", "--template=self.commit_id() ++ '\n'", "--revisions"]
-review = ["pl", "--revisions=show_stack_review(@)"]
+review = ["pl", "--revisions=show_review(@)"]
 sq = ["squash"]
 stack = ["pl", "--revisions=show_stack(@)"]
 stacks = ["pl", "--revisions=show_stacks(@)"]
@@ -97,9 +97,9 @@ p4merge.merge-args = ["$base", "$left", "$right", "$output"]
 "shortstack(x)" = "relation_to_trunk(x) | heads(ancestors(immutable()..x, 2))"
 "show_stack(x)" = "stack(x) | shortstack(@)"
 "show_stacks(x)" = "show_stack(x) | show_reachable_mut(@)"
-"show_stack_review(x)" = "show_stacks(x) | lca(trunk(), x)::trunk()"
 "me()" = "show_reachable_mut(mine()) | shortstack(@)"
 "show_reachable_mut(x)" = "ancestors(reachable(x, mutable()), 2)"
+"show_review(x)" = "show_stacks(x) | lca(trunk(), x)::trunk()"
 
 [templates]
 log_node = "erichdongubler_log_node()"
