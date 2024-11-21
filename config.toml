@@ -15,25 +15,25 @@ dup = ["duplicate"]
 fixup-line = ["log", "--no-graph", "--template=\"fixup! \" ++ description.first_line()", "--revisions"]
 fresh = ["new", "trunk()"]
 iwc = ["--ignore-working-copy"]
-me = ["pl", "--revisions=me()"]
+me = ["pl", "--revisions=show_me()"]
+mine = ["pl", "--revisions=show_mine()"]
 msg-line = ["log", "--no-graph", "--template=description.first_line()", "--revisions"]
 mutable = ["pl", "--revisions=ancestors(mutable(), 2) | trunk() | bookmarks()"]
 mut = ["mutable"]
 np = ["--no-pager"]
 pl = ["log", "--template=erichdongubler_preferred()"]
 reach = ["reachable"]
-reachable = ["pl", "--revisions=show_stacks(@)"]
+reachable = ["pl", "--revisions=show_reachable_mut(@)"]
 refresh = ["rebase", "-d", "trunk()"]
 rev-parse = ["log", "--no-graph", "--no-pager", "--color=never", "--template=self.commit_id() ++ '\n'", "--revisions"]
-review = ["pl", "--revisions=show_review(@)"]
+review = ["pl", "--revisions=show_review(@ | trunk())"]
 sq = ["squash"]
 stack = ["pl", "--revisions=show_stack(@)"]
-stacks = ["pl", "--revisions=show_stacks(@)"]
 trunk = ["pl", "--revisions=..trunk()"]
 unsynced = ["pl", "--revisions=mutable() ~ ancestors(remote_bookmarks())"]
 upstream = ["pl", "--revisions=::@"]
 up = ["upstream"]
-wip = ["pl", "--revisions=working_copies()"]
+wip = ["mut", "--revisions=working_copies()"]
 
 [colors]
 "bookmark" = { fg = "bright green", bold = true }
@@ -96,15 +96,14 @@ subprocess = true
 p4merge.merge-args = ["$base", "$left", "$right", "$output"]
 
 [revset-aliases]
-"lca(x, y)" = "heads(::x & ::y)" # "lowest common ancestors"
-"relation_to_trunk(x)" = "lca(trunk(), x) | trunk()"
-"stack(x)" = "relation_to_trunk(x) | ancestors(immutable()..x, 2)"
-"shortstack(x)" = "relation_to_trunk(x) | heads(ancestors(immutable()..x, 2))"
-"show_stack(x)" = "stack(x) | shortstack(@)"
-"show_stacks(x)" = "show_stack(x) | show_reachable_mut(@)"
-"me()" = "show_reachable_mut(mine()) | shortstack(@)"
+"show_fork_point(x)" = "x | fork_point(x)"
+"show_imm_parents(x)" = "show_fork_point(x | trunk()) | heads(ancestors(immutable()..x, 2))"
+"show_me()" = "show_reachable_mut(mine()) | show_imm_parents(@)"
+"show_mine()" = "show_fork_point(@ | trunk()) | mine()"
 "show_reachable_mut(x)" = "ancestors(reachable(x, mutable()), 2)"
-"show_review(x)" = "show_stacks(x) | lca(trunk(), x)::trunk()"
+"show_stack(x)" = "show_fork_point(x | trunk()) | ancestors(immutable()..x, 2)"
+"show_stacks(x)" = "show_fork_point(x | trunk()) | show_reachable_mut(x)"
+"show_review(x)" = "fork_point(x)::x"
 
 [templates]
 log_node = "erichdongubler_log_node()"
