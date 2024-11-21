@@ -29,7 +29,7 @@ trunk = ["pl", "--revisions=..trunk()"]
 unsynced = ["pl", "--revisions=mutable() ~ ancestors(remote_bookmarks())"]
 upstream = ["pl", "--revisions=::@"]
 up = ["upstream"]
-wip = ["pl", "--revisions=working_copies()"]
+wip = ["pl", "--revisions=show_reachable_mut(working_copies())"]
 
 [colors]
 "bookmark" = { fg = "bright green", bold = true }
