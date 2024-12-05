@@ -138,9 +138,8 @@ p4merge.merge-args = ["$base", "$left", "$right", "$output"]
 [revsets]
 short-prefixes = "show_reachable_mut(mutable())" # Otherwise, this would be the `log` revset.
 
-# # Template for `snapshot.auto-update-stale` repository usage, if needed.
-# [snapshot]
-# auto-update-stale = true
+[snapshot]
+auto-update-stale = true
 
 [templates]
 log_node = "erichdongubler_log_node()"
