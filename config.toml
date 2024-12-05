@@ -12,7 +12,7 @@ fixup-line = ["log", "--no-graph", "--template=\"fixup! \" ++ description.first_
 fresh = ["new", "trunk()"]
 iwc = ["--ignore-working-copy"]
 me = ["pl", "--revisions=show_my_mut()"]
-mine = ["pl", "--revisions=show_lca(@, trunk()) | mine()"]
+mine = ["pl", "--revisions=show_fork_point(@ | trunk()) | mine()"]
 msg-line = ["log", "--no-graph", "--template=description.first_line()", "--revisions"]
 mutable = ["pl", "--revisions=ancestors(mutable(), 2) | trunk() | bookmarks()"]
 mut = ["mutable"]
@@ -91,13 +91,12 @@ push-bookmark-prefix = "erichdongubler/push-"
 p4merge.merge-args = ["$base", "$left", "$right", "$output"]
 
 [revset-aliases]
-"lca(x, y)" = "heads(::x & ::y)" # "lowest common ancestors"
-"show_imm_parents(x)" = "show_lca(x, trunk()) | heads(ancestors(immutable()..x, 2))"
+"show_fork_point(x)" = "x | fork_point(x)"
+"show_imm_parents(x)" = "show_fork_point(x | trunk()) | heads(ancestors(immutable()..x, 2))"
 "show_reachable_mut(x)" = "ancestors(reachable(x, mutable()), 2)"
-"show_lca(x, y)" = "x | lca(y, x) | y"
-"show_stack(x)" = "show_lca(x, trunk()) | ancestors(immutable()..x, 2)"
-"show_stacks(x)" = "show_lca(x, trunk()) | show_reachable_mut(x)"
-"show_review(x)" = "show_stacks(x) | lca(trunk(), x)::trunk()"
+"show_stack(x)" = "show_fork_point(x | trunk()) | ancestors(immutable()..x, 2)"
+"show_stacks(x)" = "show_fork_point(x | trunk()) | show_reachable_mut(x)"
+"show_review(x)" = "show_stacks(x) | fork_point(trunk() | x)::trunk()"
 "show_my_mut()" = "show_reachable_mut(mine()) | show_imm_parents(@)"
 
 [templates]
