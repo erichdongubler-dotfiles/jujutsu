@@ -18,13 +18,13 @@ mut = ["mutable"]
 np = ["--no-pager"]
 pl = ["log", "--template=erichdongubler_preferred()"]
 reach = ["reachable"]
-reachable = ["pl", "--revisions=erichdongubler_stacks(@)"]
+reachable = ["pl", "--revisions=show_stacks(@)"]
 refresh = ["rebase", "-d", "trunk()"]
 rev-parse = ["log", "--no-graph", "--no-pager", "--color=never", "--template=self.commit_id() ++ '\n'", "--revisions"]
-review = ["pl", "--revisions=erichdongubler_stack_review(@)"]
+review = ["pl", "--revisions=show_stack_review(@)"]
 sq = ["squash"]
-stack = ["pl", "--revisions=erichdongubler_stack(@)"]
-stacks = ["pl", "--revisions=erichdongubler_stacks(@)"]
+stack = ["pl", "--revisions=show_stack(@)"]
+stacks = ["pl", "--revisions=show_stacks(@)"]
 trunk = ["pl", "--revisions=..trunk()"]
 unsynced = ["pl", "--revisions=mutable() ~ ancestors(remote_bookmarks())"]
 upstream = ["pl", "--revisions=::@"]
@@ -95,9 +95,9 @@ p4merge.merge-args = ["$base", "$left", "$right", "$output"]
 "relation_to_trunk(x)" = "lca(trunk(), x) | trunk()"
 "stack(x)" = "relation_to_trunk(x) | ancestors(immutable()..x, 2)"
 "shortstack(x)" = "relation_to_trunk(x) | heads(ancestors(immutable()..x, 2))"
-"erichdongubler_stack(x)" = "stack(x) | shortstack(@)"
-"erichdongubler_stacks(x)" = "erichdongubler_stack(x) | show_reachable_mut(@)"
-"erichdongubler_stack_review(x)" = "erichdongubler_stacks(x) | lca(trunk(), x)::trunk()"
+"show_stack(x)" = "stack(x) | shortstack(@)"
+"show_stacks(x)" = "show_stack(x) | show_reachable_mut(@)"
+"show_stack_review(x)" = "show_stacks(x) | lca(trunk(), x)::trunk()"
 "me()" = "show_reachable_mut(mine()) | shortstack(@)"
 "show_reachable_mut(x)" = "ancestors(reachable(x, mutable()), 2)"
 
