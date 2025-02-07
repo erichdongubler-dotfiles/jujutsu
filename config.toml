@@ -90,6 +90,7 @@ wip = ["pl", "--revisions=working_copies()"]
 
 [git]
 push-bookmark-prefix = "erichdongubler/push-"
+subprocess = true
 
 [merge-tools]
 p4merge.merge-args = ["$base", "$left", "$right", "$output"]
