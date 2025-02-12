@@ -15,7 +15,7 @@ commit-id = [
   '--template=self.commit_id() ++ "\n"',
   "--revisions",
 ]
-conflicts = ["pl", "--revisions=show_reachable_mut(conflicts())"]
+conflicts = ["pl", "--revisions=show_reachable_mut(conflicts() & mutable())"]
 downstream = [
   "pl",
   "--revisions=ancestors(immutable()..@, 2) | descendants(immutable()..@)",
