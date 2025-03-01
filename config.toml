@@ -15,7 +15,7 @@ commit-id = [
   '--template=self.commit_id() ++ "\n"',
   "--revisions",
 ]
-conflicts = ["pl", "--revisions=show_reachable_mut(conflicts() & mutable())"]
+conflicts = ["pl", "--revisions=show_conflicts()"]
 downstream = [
   "pl",
   "--revisions=ancestors(immutable()..@, 2) | descendants(immutable()..@)",
@@ -123,6 +123,7 @@ subprocess = true
 p4merge.merge-args = ["$base", "$left", "$right", "$output"]
 
 [revset-aliases]
+"show_conflicts()" = "show_reachable_mut(conflicts() & mutable())"
 "show_fork_point(x)" = "x | fork_point(x)"
 "show_imm_parents(x)" = "show_fork_point(x | trunk()) | heads(ancestors(immutable()..x, 2))"
 "show_me()" = "show_reachable_mut(mine()) | show_imm_parents(@)"
