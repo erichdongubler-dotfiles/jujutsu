@@ -38,7 +38,7 @@ msg-line = [
   "--template=description.first_line()",
   "--revisions",
 ]
-mutable = ["pl", "--revisions=ancestors(mutable(), 2) | trunk() | bookmarks()"]
+mutable = ["pl", "--revisions=show_mutable()"]
 mut = ["mutable"]
 np = ["--no-pager"]
 pl = ["log", "--template=erichdongubler_preferred()"]
@@ -127,6 +127,7 @@ p4merge.merge-args = ["$base", "$left", "$right", "$output"]
 "show_imm_parents(x)" = "show_fork_point(x | trunk()) | heads(ancestors(immutable()..x, 2))"
 "show_me()" = "show_reachable_mut(mine()) | show_imm_parents(@)"
 "show_mine()" = "show_fork_point(@ | trunk()) | mine()"
+"show_mutable()" = "ancestors(mutable(), 2) | trunk() | bookmarks()"
 "show_reachable_mut(x)" = "ancestors(reachable(x, mutable()), 2)"
 "show_stack(x)" = "show_fork_point(x | trunk()) | ancestors(immutable()..x, 2)"
 "show_stacks(x)" = "show_fork_point(x | trunk()) | show_reachable_mut(x)"
