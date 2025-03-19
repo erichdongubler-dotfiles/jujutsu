@@ -117,6 +117,7 @@ wip = ["mut", "--revisions=working_copies()"]
 
 [git]
 push-bookmark-prefix = "erichdongubler/push-"
+sign-on-push = true
 subprocess = true
 
 [merge-tools]
