@@ -138,6 +138,11 @@ p4merge.merge-args = ["$base", "$left", "$right", "$output"]
 [revsets]
 short-prefixes = "show_reachable_mut(mutable())" # Otherwise, this would be the `log` revset.
 
+[signing]
+behavior = "force"
+backend = "ssh"
+key = "~/.ssh/id_ed25519.pub"
+
 [snapshot]
 auto-update-stale = true
 
