@@ -214,6 +214,9 @@ default-command = "stack"
 merge-editor = "p4merge"
 pager = ":builtin"
 
+[ui.streampager]
+wrapping = "none"
+
 [user]
 name = "Erich Gubler"
 email = "erichdongubler@gmail.com"
