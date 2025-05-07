@@ -219,6 +219,7 @@ merge-editor = "p4merge"
 pager = ":builtin"
 
 [ui.streampager]
+show-ruler = false
 wrapping = "none"
 
 [user]
