@@ -117,6 +117,7 @@ wip = ["mut", "--revisions=working_copies()"]
 
 [git]
 sign-on-push = true
+track-default-bookmark-on-clone = true
 
 [merge-tools]
 p4merge.merge-args = ["$base", "$left", "$right", "$output"]
