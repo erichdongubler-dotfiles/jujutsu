@@ -116,7 +116,7 @@ wip = ["mut", "--revisions=working_copies()"]
 "op_log current_operation" = { color = "bright white", bold = true }
 
 [git]
-push-bookmark-prefix = "erichdongubler/push-"
+push-bookmark-prefix = "erichdongubler-push-"
 sign-on-push = true
 
 [merge-tools]
