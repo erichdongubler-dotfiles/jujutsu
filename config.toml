@@ -213,7 +213,7 @@ if(
 [ui]
 default-command = "stack"
 merge-editor = "p4merge"
-pager = ":builtin"
+pager = "less -XRF"
 
 [ui.streampager]
 show-ruler = false
