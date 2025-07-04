@@ -116,7 +116,6 @@ wip = ["mut", "--revisions=working_copies()"]
 "op_log current_operation" = { color = "bright white", bold = true }
 
 [git]
-push-bookmark-prefix = "erichdongubler-push-"
 sign-on-push = true
 
 [merge-tools]
@@ -147,6 +146,7 @@ key = "~/.ssh/id_ed25519.pub"
 auto-update-stale = true
 
 [templates]
+git_push_bookmark = "'erichdongubler-push-' ++ change_id.short()"
 log_node = "erichdongubler_log_node()"
 op_log_node = "erichdongubler_op_node()"
 
