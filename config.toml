@@ -94,6 +94,7 @@ wip = ["mut", "--revisions=working_copies()"]
 "working_copy empty" = { bold = true }
 "working_copy empty description placeholder" = { bold = true }
 "working_copy empty timestamp" = "green"
+"working_copy tags" = { fg = "yellow", bold = true }
 "working_copy timestamp" = "green"
 "working_copy author" = { bold = true }
 "working_copy committer" = { bold = true }
