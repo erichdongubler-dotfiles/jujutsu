@@ -1,0 +1,4 @@
+[[--scope]]
+--when.platforms = ["termux"]
+[--scope.ui]
+pager = "less -XSR"
