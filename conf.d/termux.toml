@@ -1,0 +1,5 @@
+# TODO: resolve <https://github.com/termux/termux-packages/issues/27258>, so this can be removed.
+[[--scope]]
+--when.platforms = ["termux"]
+[--scope.ui]
+pager = "less -XSR"
