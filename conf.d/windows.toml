@@ -1,0 +1,4 @@
+[[--scope]]
+--when.platforms = ["windows"]
+[--scope.signing]
+key = "C:/Users/Erich/.ssh/id_ed25519.pub"
