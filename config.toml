@@ -7,6 +7,10 @@
 [aliases]
 ab = ["abandon"]
 all = ["pl", "--revisions=all() | tags()"]
+allaya = [
+  "pl",
+  "--revisions=ancestors(reachable(children(roots(immutable()..@)), mutable()), 2)",
+]
 ascii = ["--config=ui.graph.style='ascii'"]
 bkmk = ["bookmark"]
 cleanup = ["pl", "--revisions=bookmarks() & immutable()"]
