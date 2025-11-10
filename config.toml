@@ -1,8 +1,8 @@
 "$schema" = "https://jj-vcs.github.io/jj/latest/config-schema.json"
 
 # # Template for `watchman` repository usage, if needed.
-# core.fsmonitor = "watchman"
-# core.watchman = { register-snapshot-trigger = true }
+# fsmonitor.backend = "watchman"
+# fsmonitor.watchman.register-snapshot-trigger = true
 
 [aliases]
 ab = ["abandon"]
