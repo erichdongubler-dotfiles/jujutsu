@@ -215,7 +215,7 @@ if(
 
 [ui]
 default-command = "stack"
-merge-editor = "p4merge"
+merge-editor = "mergiraf"
 pager = ":builtin"
 
 [ui.streampager]
