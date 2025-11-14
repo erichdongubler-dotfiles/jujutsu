@@ -46,6 +46,10 @@ pl = ["log", "--template=erichdongubler_preferred()"]
 pop = ["abandon", "--retain-bookmarks"]
 reach = ["reachable"]
 reachable = ["pl", "--revisions=show_reachable_mut(@)"]
+recent = [
+  "pl",
+  "--revisions=show_reachable_mut(@ | (mutable() & committer_date(after:'1 month ago')))",
+]
 refresh = ["rebase", "-d", "trunk()"]
 rev-parse = [
   "log",
