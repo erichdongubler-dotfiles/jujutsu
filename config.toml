@@ -134,6 +134,7 @@ p4merge.merge-args = ["$base", "$left", "$right", "$output"]
 
 [revset-aliases]
 "imm_parents(x)" = "heads(ancestors(immutable()..x, 2))"
+"mut_roots(x)" = "roots(reachable(x, mutable()))"
 "show_conflicts()" = "show_reachable_mut(conflicts() & mutable())"
 "show_fork_point(x)" = "x | fork_point(x)"
 "show_imm_parents(x)" = "show_fork_point(x | trunk()) | imm_parents(x)"
