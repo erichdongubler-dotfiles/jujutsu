@@ -82,6 +82,7 @@ wip = ["mut", "--revisions=working_copies()"]
 "description placeholder" = "bright black"
 "elided" = "bright black"
 "email" = "bright black"
+"emphasized" = { underline = true }
 "empty description placeholder" = "bright black"
 "empty" = "bright black"
 "erichdongubler_dash_fluff" = "bright black"
@@ -248,6 +249,15 @@ if(
 			),
 		),
 	),
+)
+'''
+
+"erichdongubler_log_compact_emphasizing" = "erichdongubler_log_compact_emphasizing(self)"
+"erichdongubler_log_compact_emphasizing(commit)" = '''
+if(
+	self.contained_in(commit),
+	label("emphasized", erichdongubler_log_compact(commit)),
+	erichdongubler_log_compact(commit)
 )
 '''
 
