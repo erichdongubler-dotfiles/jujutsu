@@ -127,6 +127,18 @@ track-default-bookmark-on-clone = true
 
 [merge-tools]
 p4merge.merge-args = ["$base", "$left", "$right", "$output"]
+meld.merge-args = [
+  "@@",
+  "$left",
+  "$base",
+  "$right",
+  "@@",
+  "-o",
+  "@@",
+  "$output",
+  "@@",
+  "--auto-merge",
+]
 
 [revset-aliases]
 "imm_parents(x)" = "heads(ancestors(immutable()..x, 2))"
