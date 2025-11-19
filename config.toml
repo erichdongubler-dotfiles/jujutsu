@@ -133,6 +133,18 @@ track-default-bookmark-on-clone = true
 
 [merge-tools]
 p4merge.merge-args = ["$base", "$left", "$right", "$output"]
+meld.merge-args = [
+  "@@",
+  "$left",
+  "$base",
+  "$right",
+  "@@",
+  "-o",
+  "@@",
+  "$output",
+  "@@",
+  "--auto-merge",
+]
 
 [remotes.origin]
 auto-track-bookmarks = "*"
