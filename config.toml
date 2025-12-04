@@ -6,6 +6,7 @@
 
 [aliases]
 ab = ["abandon"]
+aididit = ["pl", "--revisions=mine() & ..trunk()"]
 all = ["pl", "--revisions=all() | tags()"]
 ascii = ["--config=ui.graph.style='ascii'"]
 bkmk = ["bookmark"]
