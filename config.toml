@@ -198,7 +198,7 @@ if(
 		concat(
 			separate(" ",
 				label("erichdongubler_dash_fluff", "---"),
-				format_short_change_id_with_hidden_and_divergent_info(self),
+				format_short_change_id_with_change_offset(self),
 				format_short_commit_id(commit_id),
 				label("erichdongubler_dash_fluff", "-"),
 				bookmarks,
