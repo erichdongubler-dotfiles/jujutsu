@@ -204,7 +204,7 @@ if(
 				bookmarks,
 				tags,
 				working_copies,
-				if(git_head, label("git_head", "HEAD")),
+				if(self.contained_in("first_parent(@)"), label("git_head", "HEAD")),
 				if(conflict, label("conflict", "conflict")),
 			),
 			"\n",
