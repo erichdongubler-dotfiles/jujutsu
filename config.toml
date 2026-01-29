@@ -33,6 +33,7 @@ fixup-line = [
 fresh = ["new", "trunk()"]
 iwc = ["--ignore-working-copy"]
 me = ["pl", "--revisions=show_me()"]
+meld = ["resolve", "--tool=meld"]
 mine = ["pl", "--revisions=show_mine()"]
 msg-line = [
   "log",
