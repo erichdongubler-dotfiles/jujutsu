@@ -192,6 +192,11 @@ coalesce(
 	"o",
 )
 '''
+# My generally preferred way to display commit summaries in, e.g., a commit graph.
+#
+# This is intended to be _mostly_ give the same as `jj`'s default, but blended with how I once
+# configured my Git output. I use dashes to provide some visual structure for log output, and have
+# some override hooks that I use in some specific repos I work on.
 "erichdongubler_preferred()" = '''
 if(
 	root,
