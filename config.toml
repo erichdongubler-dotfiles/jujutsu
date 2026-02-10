@@ -134,6 +134,10 @@ track-default-bookmark-on-clone = true
 [merge-tools]
 p4merge.merge-args = ["$base", "$left", "$right", "$output"]
 
+[remotes.origin]
+auto-track-bookmarks = "*"
+auto-track-created-bookmarks = "*"
+
 [revset-aliases]
 "imm_parents(x)" = "heads(ancestors(immutable()..x, 2))"
 "mut_roots(x)" = "roots(reachable(x, mutable()))"
