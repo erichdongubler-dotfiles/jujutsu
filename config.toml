@@ -170,15 +170,18 @@ draft_commit_description = "builtin_draft_commit_description_with_diff"
 op_log_node = "erichdongubler_op_node()"
 
 [template-aliases]
+
 # Hook in `erichdongubler_log_compact` intended for repo-specific configuration that can format the
 # first line in a more interesting way, e.g., via `hyperlink()` or formatting/labels.
 "erichdongubler_log_compact_description_line" = "erichdongubler_log_compact_description_line(self)"
 "erichdongubler_log_compact_description_line(commit)" = "commit.description().first_line()"
+
 # Hook in `erichdongubler_log_compact` for "extra refs" that can be implemented via user
 # configuration. Intended for repo-specific configuration for, e.g., patch submission systems that
 # embed the artifact the commit corresponds to.
 "erichdongubler_log_compact_extra_refs" = "erichdongubler_log_compact_extra_refs(self)"
 "erichdongubler_log_compact_extra_refs(commit)" = ""
+
 # Stolen and modified from
 # <https://github.com/martinvonz/jj/blob/4c57a8868fa175ada435bce96e3805da8607f4b9/cli/src/config/templates.toml#L225-L242>
 "erichdongubler_log_node()" = '''
@@ -200,12 +203,14 @@ coalesce(
 	),
 )
 '''
+
 "erichdongubler_op_node()" = '''
 coalesce(
 	if(current_operation, label("current_operation", "@")),
 	"o",
 )
 '''
+
 # My generally preferred way to display commit summaries in, e.g., a commit graph.
 #
 # This is intended to be _mostly_ give the same as `jj`'s default, but blended with how I once
@@ -247,7 +252,9 @@ if(
 	),
 )
 '''
+
 "format_timestamp(timestamp)" = 'label("timestamp", timestamp.ago())'
+
 "format_short_signature(signature)" = "signature.name()"
 
 [ui]
