@@ -44,7 +44,7 @@ msg-line = [
 mutable = ["pl", "--revisions=show_mutable()"]
 mut = ["mutable"]
 np = ["--no-pager"]
-pl = ["log", "--template=erichdongubler_preferred()"]
+pl = ["log", "--template=erichdongubler_log_compact"]
 pop = ["abandon", "--retain-bookmarks"]
 reach = ["reachable"]
 reachable = ["pl", "--revisions=show_reachable_mut(@)"]
@@ -202,29 +202,36 @@ coalesce(
 # This is intended to be _mostly_ give the same as `jj`'s default, but blended with how I once
 # configured my Git output. I use dashes to provide some visual structure for log output, and have
 # some override hooks that I use in some specific repos I work on.
-"erichdongubler_preferred()" = '''
+"erichdongubler_log_compact" = "erichdongubler_log_compact(self)"
+"erichdongubler_log_compact(commit)" = '''
 if(
-	root,
-	format_root_commit(self),
+	commit.root(),
+	format_root_commit(commit),
 	label(if(current_working_copy, "working_copy"),
 		concat(
 			separate(" ",
 				label("erichdongubler_dash_fluff", "---"),
-				format_short_change_id_with_change_offset(self),
-				format_short_commit_id(commit_id),
+				format_short_change_id_with_change_offset(commit),
+				format_short_commit_id(commit.commit_id()),
 				label("erichdongubler_dash_fluff", "-"),
-				bookmarks,
-				tags,
-				working_copies,
-				if(self.contained_in("first_parent(@)"), label("git_head", "HEAD")),
-				if(conflict, label("conflict", "conflict")),
+				commit.bookmarks(),
+				commit.tags(),
+				commit.working_copies(),
+				if(commit.contained_in("first_parent(@)"), label("git_head", "HEAD")),
+				format_commit_labels(commit),
+				if(config("ui.show-cryptographic-signatures").as_boolean(),
+					format_short_cryptographic_signature(commit.signature())
+				),
 			),
 			"\n",
 			separate(" ",
-				if(empty, label("empty", "(empty)")),
-				if(description, description.first_line(), description_placeholder),
-				label("author", if(author.name(), author.name(), email_placeholder)),
-				format_timestamp(committer.timestamp()),
+				if(commit.empty(), empty_commit_marker),
+				if(commit.description(),
+					commit.description().first_line(),
+					label(if(commit.empty(), "empty"), description_placeholder),
+				),
+				format_short_signature(commit.author()),
+				format_timestamp(commit_timestamp(commit)),
 			),
 		),
 	),
