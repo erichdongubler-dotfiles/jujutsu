@@ -153,7 +153,7 @@ auto-track-created-bookmarks = "*"
 "show_review(x)" = "fork_point(x)::x"
 
 [revsets]
-short-prefixes = "show_reachable_mut(mutable())" # Otherwise, this would be the `log` revset.
+short-prefixes = "show_reachable_mut(mutable())"  # Otherwise, this would be the `log` revset.
 
 [signing]
 behavior = "force"
@@ -170,12 +170,10 @@ draft_commit_description = "builtin_draft_commit_description_with_diff"
 op_log_node = "erichdongubler_op_node"
 
 [template-aliases]
-
 # Hook in `erichdongubler_log_compact` intended for repo-specific configuration that can format the
 # first line in a more interesting way, e.g., via `hyperlink()` or formatting/labels.
 "erichdongubler_log_compact_description_line" = "erichdongubler_log_compact_description_line(self)"
 "erichdongubler_log_compact_description_line(commit)" = "commit.description().first_line()"
-
 # Hook in `erichdongubler_log_compact` for "extra refs" that can be implemented via user
 # configuration. Intended for repo-specific configuration for, e.g., patch submission systems that
 # embed the artifact the commit corresponds to.
