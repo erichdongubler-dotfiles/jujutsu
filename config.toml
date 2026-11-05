@@ -128,7 +128,6 @@ wip = ["mut", "--revisions=working_copies()"]
 "op_log current_operation" = { color = "bright white", bold = true }
 
 [git]
-sign-on-push = true
 track-default-bookmark-on-clone = true
 
 [merge-tools]
